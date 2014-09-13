@@ -1,0 +1,1 @@
+console.log('all work with gulp-gold');
