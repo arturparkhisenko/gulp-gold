@@ -25,3 +25,5 @@ License
 ----
 
 MIT
+
+[gulp-gold npm package link](https://www.npmjs.org/package/gulp-gold)
