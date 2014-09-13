@@ -1,0 +1,1 @@
+console.log("all work with gulp-gold"),function(){for(var o,e=function(){},l=["assert","clear","count","debug","dir","dirxml","error","exception","group","groupCollapsed","groupEnd","info","log","markTimeline","profile","profileEnd","table","time","timeEnd","timeStamp","trace","warn"],n=l.length,r=window.console=window.console||{};n--;)o=l[n],r[o]||(r[o]=e)}();

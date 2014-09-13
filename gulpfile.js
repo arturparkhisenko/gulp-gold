@@ -9,20 +9,22 @@ var gulp = require('gulp'), // gulp
     imagemin = require('gulp-imagemin'), // img min
     rename = require('gulp-rename'), // rename
     concat = require('gulp-concat'); // concatenation
-
+    
 // css
 gulp.task('css', function() {
     // !exclude vendor
     gulp.src(['./assets/css/**/*.css', '!./assets/css/vendor/**/*.css'])
         .pipe(concat('screen.css'))
         .pipe(csslint())
-        .pipe(uncss())
+        .pipe(uncss({
+            html: ['./dev/index.html'] //, 'etc.html'
+        }))
         .pipe(myth())
         .pipe(gulp.dest('./dev/css'))
         .pipe(rename('screen.min.css'))
         .pipe(csso())
         .pipe(gulp.dest('./dev/css'))
-        .on('error', csserror.log);
+        .on('error', function(err){ console.log(err.message); });
 });
 
 // js
@@ -36,7 +38,7 @@ gulp.task('js', function() {
         .pipe(rename('index.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./dev/js'))
-        .on('error', jserror.log);
+        .on('error', function(err){ console.log(err.message); });
 });
 
 // img
@@ -48,31 +50,19 @@ gulp.task('images', function() {
 
 // default
 gulp.task('default', function() {
-    // prepare
-    gulp.run('css');
-    gulp.run('js');
-    gulp.run('images');
-
-    console.log('default tast end');
-
-    // watch
-    gulp.watch('assets/css/**/*', function() {
-        gulp.run('css');
-    });
-    gulp.watch('assets/js/**/*', function() {
-        gulp.run('js');
-    });
-    gulp.watch('assets/img/**/*', function() {
-        gulp.run('images');
-    });
+    gulp.start('css','js','images');
+    console.log('default task end');
 });
 
+// build
 gulp.task('build', function() {
     // css
     gulp.src(['./assets/css/**/*.css', '!./assets/css/vendor/**/*.css'])
         .pipe(concat('screen.css'))
         .pipe(csslint())
-        .pipe(uncss())
+        .pipe(uncss({
+            html: ['./build/index.html'] //, 'etc.html'
+        }))
         .pipe(myth())
         .pipe(csso())
         .pipe(gulp.dest('./build/css'));
@@ -88,5 +78,14 @@ gulp.task('build', function() {
         .pipe(imagemin())
         .pipe(gulp.dest('./build/img'));
 
-    console.log('build tast end');
+    console.log('build task end');
+});
+
+// watch
+gulp.task('watch', function() {   
+    gulp.watch('./assets/css/**/*', ['css']);
+    gulp.watch('./assets/js/**/*', ['js']);
+    gulp.watch('./assets/img/**/*', ['images']);
+    
+    console.log('watch task end');
 });
