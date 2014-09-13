@@ -23,7 +23,7 @@ $ npm install gulp gulp-csso gulp-myth gulp-uncss gulp-csslint gulp-jshint gulp-
 
 ##Includes
 
-* [My customization](https://github.com/ikeagold/css-reset) of Eric Meyer's reset.css from [jasonkarns](https://github.com/jasonkarns/css-reset) 
+* [My customization](https://github.com/ikeagold/css-reset) of [Eric Meyer's](http://meyerweb.com/eric/tools/css/reset/) reset.css from [jasonkarns](https://github.com/jasonkarns/css-reset) 
 
 License
 ----
