@@ -21,6 +21,10 @@ $ npm install gulp gulp-csso gulp-myth gulp-uncss gulp-csslint gulp-jshint gulp-
 * build for deploy
 ```sh gulp build```
 
+##Includes
+
+* [My customization](https://github.com/ikeagold/css-reset) of Eric Meyer's reset.css from [jasonkarns](https://github.com/jasonkarns/css-reset) 
+
 License
 ----
 

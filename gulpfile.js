@@ -9,9 +9,9 @@ var gulp = require('gulp'), // gulp
     imagemin = require('gulp-imagemin'), // img min
     rename = require('gulp-rename'), // rename
     concat = require('gulp-concat'); // concatenation
-    
+
 // css
-gulp.task('css', function() {
+gulp.task('css', function () {
     // !exclude vendor
     gulp.src(['./assets/css/**/*.css', '!./assets/css/vendor/**/*.css'])
         .pipe(concat('screen.css'))
@@ -24,11 +24,13 @@ gulp.task('css', function() {
         .pipe(rename('screen.min.css'))
         .pipe(csso())
         .pipe(gulp.dest('./dev/css'))
-        .on('error', function(err){ console.log(err.message); });
+        .on('error', function (err) {
+            console.log(err.message);
+        });
 });
 
 // js
-gulp.task('js', function() {
+gulp.task('js', function () {
     // !exclude vendor
     gulp.src(['./assets/js/**/*.js', '!./assets/js/vendor/**/*.js'])
         .pipe(concat('index.js'))
@@ -38,24 +40,26 @@ gulp.task('js', function() {
         .pipe(rename('index.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./dev/js'))
-        .on('error', function(err){ console.log(err.message); });
+        .on('error', function (err) {
+            console.log(err.message);
+        });
 });
 
 // img
-gulp.task('images', function() {
+gulp.task('images', function () {
     gulp.src('./assets/img/**/*')
         .pipe(imagemin())
         .pipe(gulp.dest('./dev/img'));
 });
 
 // default
-gulp.task('default', function() {
-    gulp.start('css','js','images');
+gulp.task('default', function () {
+    gulp.start('css', 'js', 'images');
     console.log('default task end');
 });
 
 // build
-gulp.task('build', function() {
+gulp.task('build', function () {
     // css
     gulp.src(['./assets/css/**/*.css', '!./assets/css/vendor/**/*.css'])
         .pipe(concat('screen.css'))
@@ -82,10 +86,10 @@ gulp.task('build', function() {
 });
 
 // watch
-gulp.task('watch', function() {   
+gulp.task('watch', function () {
     gulp.watch('./assets/css/**/*', ['css']);
     gulp.watch('./assets/js/**/*', ['js']);
     gulp.watch('./assets/img/**/*', ['images']);
-    
+
     console.log('watch task end');
 });
