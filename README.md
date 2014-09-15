@@ -10,7 +10,7 @@ Im runnin [Brackets.io](http://brackets.io/) with Live Preview :)
 ```
 $ sudo npm install gulp -g
 $ npm init
-$ npm install gulp gulp-csso gulp-myth gulp-uncss gulp-csslint gulp-jshint gulp-uglify gulp-imagemin gulp-rename gulp-concat --save-dev
+$ npm install gulp gulp-csso gulp-myth gulp-csslint gulp-jshint gulp-uglify gulp-imagemin gulp-rename gulp-concat gulp-plumber --save-dev
 ```
 
 ##Use
