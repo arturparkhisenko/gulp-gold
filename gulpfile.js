@@ -1,4 +1,7 @@
-// plugins
+/* jshint node:true */
+'use strict';
+
+// plugins & paths
 var gulp = require('gulp'), // gulp
     csso = require('gulp-csso'), // css min
     myth = require('gulp-myth'), // css autoprefix
@@ -8,78 +11,70 @@ var gulp = require('gulp'), // gulp
     imagemin = require('gulp-imagemin'), // img min
     rename = require('gulp-rename'), // rename
     concat = require('gulp-concat'), // concatenation
-    plumber = require('gulp-plumber'); // for error handling
+    plumber = require('gulp-plumber'), // for error handling
+    del = require('del'), // for cleaning
+    sourcemaps = require('gulp-sourcemaps'), // sourcemaps
 
-// css
-gulp.task('css', function () {
-    // !exclude vendor
-    gulp.src(['./assets/css/**/*.css', '!./assets/css/vendor/**/*.css'])
-        .pipe(plumber())
-        .pipe(concat('screen.css'))
-        .pipe(csslint())
-        .pipe(myth())
-        .pipe(gulp.dest('./dev/css'))
-        .pipe(rename('screen.min.css'))
-        .pipe(csso())
-        .pipe(gulp.dest('./dev/css'));
+    paths = {
+        styles: ['src/{css,components}/**/*.css', '!src/css/notbowervendor/**/*.css'],
+        scripts: ['src/{js,components}/**/*.js', '!src/js/notbowervendor/**/*.js'],
+        images: 'src/img/**/*'
+    };
+
+gulp.task('clean', function(cb) {
+    del(['dist'], cb);
 });
 
-// js
-gulp.task('js', function () {
-    // !exclude vendor
-    gulp.src(['./assets/js/**/*.js', '!./assets/js/vendor/**/*.js'])
+gulp.task('styles', function() {
+    return gulp.src(paths.styles)
         .pipe(plumber())
-        .pipe(concat('index.js'))
+        .pipe(concat('main.css'))
+        .pipe(csslint())
+        .pipe(myth())
+        .pipe(gulp.dest('dist/css'))
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(csso())
+        .pipe(gulp.dest('src/css'))
+        .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('scripts', function() {
+    return gulp.src(paths.scripts)
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(concat('main.js'))
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
-        .pipe(gulp.dest('./dev/js'))
-        .pipe(rename('index.min.js'))
+        .pipe(gulp.dest('dist/js'))
+        .pipe(rename({
+            suffix: '.min'
+        }))
         .pipe(uglify())
-        .pipe(gulp.dest('./dev/js'));
+        .pipe(gulp.dest('src/js'))
+        .pipe(gulp.dest('dist/js'));
 });
 
-// img
-gulp.task('images', function () {
-    gulp.src('./assets/img/**/*')
+gulp.task('images', function() {
+    return gulp.src(paths.images)
         .pipe(imagemin())
-        .pipe(gulp.dest('./dev/img'));
+        .pipe(gulp.dest('dist/img'));
 });
 
-// default
-gulp.task('default', function () {
-    gulp.start('css', 'js', 'images');
-    console.log('default task end');
+gulp.task('misc', function() {
+    return gulp.src('src/**/*.{html,ico}')
+        .pipe(gulp.dest('dist/'));
 });
 
-// build
-gulp.task('build', function () {
-    // css
-    gulp.src(['./assets/css/**/*.css', '!./assets/css/vendor/**/*.css'])
-        .pipe(concat('screen.css'))
-        .pipe(csslint())
-        .pipe(myth())
-        .pipe(csso())
-        .pipe(gulp.dest('./build/css'));
-    // js
-    gulp.src(['./assets/js/**/*.js', '!./assets/js/vendor/**/*.js'])
-        .pipe(concat('index.js'))
-        .pipe(jshint())
-        .pipe(uglify())
-        .pipe(gulp.dest('./build/js'));
-
-    // img
-    gulp.src('./assets/img/**/*')
-        .pipe(imagemin())
-        .pipe(gulp.dest('./build/img'));
-
-    console.log('build task end');
+gulp.task('watch', function() {
+    gulp.watch(paths.styles, ['styles']);
+    gulp.watch(paths.scripts, ['scripts']);
+    gulp.watch(paths.images, ['images']);
 });
 
-// watch
-gulp.task('watch', function () {
-    gulp.watch('./assets/css/**/*', ['css']);
-    gulp.watch('./assets/js/**/*', ['js']);
-    gulp.watch('./assets/img/**/*', ['images']);
+gulp.task('build', ['styles', 'scripts', 'images', 'misc']);
 
-    console.log('watch task end');
+gulp.task('default', ['clean'], function() {
+    gulp.start('build');
 });

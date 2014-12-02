@@ -12,7 +12,7 @@ node_modules
 *.exe
 *.o
 *.so
- 
+
 # Packages #
 ############
 *.7z
@@ -23,13 +23,13 @@ node_modules
 *.rar
 *.tar
 *.zip
- 
+
 # Logs and databases #
 ######################
 *.log
 *.sql
 *.sqlite
- 
+
 # OS generated files #
 ######################
 .DS_Store
@@ -39,3 +39,8 @@ node_modules
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Other #
+#########
+dist
+src/components/

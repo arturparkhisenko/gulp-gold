@@ -1,0 +1,19 @@
+list:
+    - css,js inject using https://www.npmjs.org/package/gulp-inject
+    - auto bower files injection and concatenation like:
+    
+var gulp = require('gulp'),
+    concat = require('gulp-concat'),
+    filter = require('gulp-filter'),
+    order = require('gulp-order'),
+    mainBowerFiles = require('main-bower-files');
+
+gulp.task('scripts:vendor', function () {
+    var vendors = mainBowerFiles();
+
+    return gulp.src(vendors)
+        .pipe(filter('**.js'))
+        .pipe(order(vendors))
+        .pipe(concat('vendor.js'))
+        .pipe(gulp.dest('dist/'));
+});
