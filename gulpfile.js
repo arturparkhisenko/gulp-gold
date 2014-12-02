@@ -3,11 +3,12 @@
 
 // plugins & paths
 var gulp = require('gulp'), // gulp
-    csso = require('gulp-csso'), // css min
-    myth = require('gulp-myth'), // css autoprefix
     csslint = require('gulp-csslint'), // css lint
-    uglify = require('gulp-uglify'), // js min
+    myth = require('gulp-myth'), // css autoprefix
+    csso = require('gulp-csso'), // css min
     jshint = require('gulp-jshint'), // js lint
+    fixmyjs = require("gulp-fixmyjs"), // js fix
+    uglify = require('gulp-uglify'), // js min
     imagemin = require('gulp-imagemin'), // img min
     rename = require('gulp-rename'), // rename
     concat = require('gulp-concat'), // concatenation
@@ -46,6 +47,9 @@ gulp.task('scripts', function() {
         .pipe(sourcemaps.init())
         .pipe(concat('main.js'))
         .pipe(jshint())
+        .pipe(fixmyjs({
+            // JSHint settings here
+        }))
         .pipe(jshint.reporter('default'))
         .pipe(gulp.dest('dist/js'))
         .pipe(rename({
