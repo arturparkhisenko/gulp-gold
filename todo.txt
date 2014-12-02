@@ -2,18 +2,30 @@ list:
     - css,js inject using https://www.npmjs.org/package/gulp-inject
     - auto bower files injection and concatenation like:
     
-var gulp = require('gulp'),
-    concat = require('gulp-concat'),
-    filter = require('gulp-filter'),
-    order = require('gulp-order'),
-    mainBowerFiles = require('main-bower-files');
+        var gulp = require('gulp'),
+            concat = require('gulp-concat'),
+            filter = require('gulp-filter'),
+            order = require('gulp-order'),
+            mainBowerFiles = require('main-bower-files');
 
-gulp.task('scripts:vendor', function () {
-    var vendors = mainBowerFiles();
+        gulp.task('scripts:vendor', function () {
+            var vendors = mainBowerFiles();
 
-    return gulp.src(vendors)
-        .pipe(filter('**.js'))
-        .pipe(order(vendors))
-        .pipe(concat('vendor.js'))
-        .pipe(gulp.dest('dist/'));
-});
+            return gulp.src(vendors)
+                .pipe(filter('**.js'))
+                .pipe(order(vendors))
+                .pipe(concat('vendor.js'))
+                .pipe(gulp.dest('dist/'));
+        });
+
+    - test how fast will be watch in tasks like this and rewrite it its faster/better:
+        
+        watch = require('gulp-watch'),
+        
+        gulp.task('images', function() {
+            watch(paths.images, function() {
+                    gulp.start('clean');
+                })
+                .pipe(imagemin())
+                .pipe(gulp.dest('dist/img'));
+        });
