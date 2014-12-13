@@ -32,6 +32,7 @@ node_modules
 
 # OS generated files #
 ######################
+Desktop.ini
 .DS_Store
 .DS_Store?
 ._*
@@ -39,8 +40,17 @@ node_modules
 .Trashes
 ehthumbs.db
 Thumbs.db
+.AppleDouble
+.LSOverride
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
 
 # Other #
 #########
 dist
 src/components/
+.idea
+$RECYCLE.BIN/
