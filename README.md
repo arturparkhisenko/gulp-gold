@@ -16,7 +16,7 @@ $ sudo
 $ npm install gulp -g
 $ npm install gulp gulp-csso gulp-myth gulp-csslint gulp-jshint gulp-uglify gulp-imagemin gulp-rename gulp-concat gulp-plumber del gulp-sourcemaps gulp-fixmyjs gulp-livereload gulp-connect gulp-sass gulp-6to5 --save-dev
 ```
-* gulp-imagemin require npm2+, so u can update this by changing directory to nodejs folder and call `$ npm install npm`
+* gulp-imagemin require npm 2.1.12, so u can update this by changing directory to nodejs folder and call `$ npm install npm`
 
 ###Usage
 * clean->build->watch+LR: `$ gulp`

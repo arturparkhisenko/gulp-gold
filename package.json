@@ -10,7 +10,6 @@
     "url": "https://github.com/ikeagold/gulp-gold/issues"
   },
   "keywords": [
-    "ikeagold",
     "build",
     "stream",
     "system",
@@ -32,7 +31,13 @@
     "make",
     "tool",
     "asset",
-    "pipeline"
+    "pipeline",
+    "js",
+    "css",
+    "html",
+    "sass",
+    "scss",
+    "gulp"
   ],
   "engineStrict": true,
   "engines": {
