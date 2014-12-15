@@ -1,5 +1,3 @@
-package.json
-
 # NodeJS modules #
 ###################
 node_modules
@@ -54,3 +52,4 @@ dist
 src/components/
 .idea
 $RECYCLE.BIN/
+#package.json

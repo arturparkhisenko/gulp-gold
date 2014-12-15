@@ -1,0 +1,63 @@
+{
+  "name": "gulp-gold",
+  "description": "Custom Gulp pack",
+  "version": "0.1.2",
+  "main": "index.html",
+  "author": "Arthur Parkhisenko <ikeagold@gmail.com> (https://ikeagold.github.io/)",
+  "homepage": "https://github.com/ikeagold/gulp-gold/",
+  "repository": "ikeagold/gulp-gold",
+  "bugs": {
+    "url": "https://github.com/ikeagold/gulp-gold/issues"
+  },
+  "keywords": [
+    "ikeagold",
+    "build",
+    "stream",
+    "system",
+    "make",
+    "tool",
+    "asset",
+    "pipeline",
+    "js",
+    "css",
+    "html",
+    "sass",
+    "scss",
+    "gulp"
+  ],
+  "tags": [
+    "build",
+    "stream",
+    "system",
+    "make",
+    "tool",
+    "asset",
+    "pipeline"
+  ],
+  "engineStrict": true,
+  "engines": {
+    "node": ">= 0.10.0",
+    "npm": ">= 2.1.12"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "del": "^1.1.0",
+    "gulp": "^3.8.10",
+    "gulp-6to5": "^1.0.2",
+    "gulp-concat": "^2.4.2",
+    "gulp-connect": "^2.2.0",
+    "gulp-csslint": "^0.1.5",
+    "gulp-csso": "^0.2.9",
+    "gulp-fixmyjs": "0.0.10",
+    "gulp-imagemin": "^2.0.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-livereload": "^3.0.2",
+    "gulp-myth": "^1.0.2",
+    "gulp-plumber": "^0.6.6",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^1.2.4",
+    "gulp-sourcemaps": "^1.2.8",
+    "gulp-uglify": "^1.0.2",
+    "gulp-webserver": "^0.9.0"
+  }
+}
