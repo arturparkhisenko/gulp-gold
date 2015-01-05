@@ -23,7 +23,7 @@ $ npm install gulp gulp-csso gulp-myth gulp-csslint gulp-jshint gulp-uglify gulp
 * only clean: `$ gulp clean`
 
 ###Optional
-* [normalize.css modified](https://github.com/ikeagold/normalize.css) (download latest)
+* [normalize.css](https://github.com/necolas/normalize.css) (download latest)
 
 ###License
 MIT
