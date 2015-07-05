@@ -1,0 +1,5 @@
+linters:
+  Comment:
+    enabled: false
+  PropertySortOrder:
+    enabled: false
