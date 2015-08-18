@@ -14,6 +14,8 @@
   "undef": true,
   "unused": true,
   "globals": {
+    "$": true,
+    "jQuery": true,
     "wrap": true,
     "unwrap": true,
     "Polymer": true,
