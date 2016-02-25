@@ -1,5 +1,5 @@
 # NodeJS modules #
-###################
+##################
 node_modules
 
 # Compiled source #
@@ -45,11 +45,20 @@ Thumbs.db
 Network Trash Folder
 Temporary Items
 .apdisk
+$RECYCLE.BIN/
+
+# git credential file #
+#######################
+.gitconfig.local
+
+# Compiled Python files #
+#########################
+*.pyc
 
 # Other #
 #########
-dist
-src/components/
 .idea
-$RECYCLE.BIN/
-#package.json
+.vagrant
+dist/
+tmp/
+src/bower_components/
