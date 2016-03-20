@@ -12,14 +12,14 @@ Used latest tools: Gulp4, Babel6, Webpack2, PostCSS
 - I hope You enjoy :)
 
 ## Installing
-- You must have installed [nodejs](http://nodejs.org/) (includes [npm](https://www.npmjs.org/))
+- You must have [nodejs](http://nodejs.org/) (includes [npm](https://www.npmjs.org/)) installed
 
 ```sh
 $ sudo
 $ npm i
 ```
 
-This project using Gulp4 so we have to use npm scripts using local gulp. You can add `./node_modules/.bin` to PATH, to use local gulp.
+This project uses Gulp4 so we have to use npm scripts using local gulp. You can add `./node_modules/.bin` to PATH, to use local gulp.
 
 To install Gulp4 globally:
 
