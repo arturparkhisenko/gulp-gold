@@ -1,0 +1,24 @@
+@import "./module-example.css";
+
+:root {
+  --brandFont: -apple-system, BlinkMacSystemFont, ".SFNSDisplay-Regular", ".SFNSText-Regular", "SF UI Text", "San Francisco", "Noto Sans", "Helvetica Neue", "Roboto", "Droid Sans", "Oxygen", "Lucida Grande", "Segoe UI", "Fira Sans", Ubuntu, Cantarell, Helvetica, Arial, sans-serif;
+}
+
+body {
+  font-family: var(--brandFont);
+  color: var(--moduleColor);
+  font-size: var(--module-size);
+  /*color: var(--moduleColor, #333);
+  font-size: var(--module-size, 2em);*/
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+}

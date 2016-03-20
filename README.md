@@ -1,30 +1,48 @@
-##Custom Gulp pack
+# gulp-gold :wrench:, [npm link](https://www.npmjs.org/package/gulp-gold)
+[![devDependency Status](https://david-dm.org/arturparkhisenko/gulp-gold/dev-status.svg)](https://david-dm.org/arturparkhisenko/gulp-gold#info=devDependencies) [![GitHub release](https://img.shields.io/github/release/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/releases) [![GitHub license](https://img.shields.io/github/license/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/blob/master/LICENSE.md)
+> custom Gulp pack
 
-###What this pack do:
-* Styles (scss, sass, css) - linted([csslint](https://www.npmjs.org/package/gulp-csslint)), autoprefixed([myth](https://www.npmjs.org/package/gulp-myth)), minified([csso](https://www.npmjs.org/package/gulp-csso)), [concatenated](https://www.npmjs.org/package/gulp-concat), [gulp-sass](https://www.npmjs.org/package/gulp-sass)
-* Scripts (js) - hinted([jshint](https://www.npmjs.org/package/gulp-jshint)), autofixed([fixmyjs](https://www.npmjs.org/package/gulp-fixmyjs)), minified([uglify](https://www.npmjs.org/package/gulp-uglify)), [concatenated](https://www.npmjs.org/package/gulp-concat), ES6 to ES5([gulp-6to5](https://www.npmjs.com/package/gulp-6to5))
-* Images (img) - minified([imagemin](https://www.npmjs.org/package/gulp-imagemin))
-* LiveReload - by [gulp-livereload](https://www.npmjs.com/package/gulp-livereload) and [gulp-connect](https://www.npmjs.com/package/gulp-connect)
-* On error its shows error output by [plumber](https://www.npmjs.org/package/gulp-plumber)
-I hope You enjoy :)
+## TL;DR
+Used latest tools: Gulp4, Babel6, Webpack2, PostCSS
+- Styles (css4) - [stylelint](http://stylelint.io/) -> [postCSS](https://www.npmjs.org/package/gulp-postcss)([postcss-import](https://www.npmjs.org/package/postcss-import), [postcss-url](https://www.npmjs.org/package/postcss-url), [cssnext](https://www.npmjs.org/package/postcss-cssnext)(autoprefixed), [cssnano](https://www.npmjs.org/package/cssnano))
+- Scripts (es2015) - [eslint](https://www.npmjs.org/package/eslint) -> [webpack](https://webpack.github.io/)([babel-loader](https://www.npmjs.org/package/babel-loader), [uglify-js](https://www.npmjs.org/package/gulp-uglify))
+- Images - minified/optimized([imagemin](https://www.npmjs.org/package/gulp-imagemin))
+- [Browsersync](https://www.npmjs.com/package/browser-sync)
+- Errors output improved by [plumber](https://www.npmjs.org/package/gulp-plumber)
+- I hope You enjoy :)
 
-###Installing
-* You must have installed [nodejs](http://nodejs.org/) and [npm](https://www.npmjs.org/)
+## Installing
+- You must have installed [nodejs](http://nodejs.org/) (includes [npm](https://www.npmjs.org/))
 
 ```sh
 $ sudo
-$ npm install gulp -g
-$ npm install gulp gulp-csso gulp-myth gulp-csslint gulp-jshint gulp-uglify gulp-imagemin gulp-rename gulp-concat gulp-plumber del gulp-sourcemaps gulp-fixmyjs gulp-livereload gulp-connect gulp-sass gulp-6to5 --save-dev
+$ npm i
 ```
-* gulp-imagemin require npm 2.1.12, so u can update this by changing directory to nodejs folder and call `$ npm install npm`
 
-###Usage
-* clean->build->watch+LR: `$ gulp`
-* only clean: `$ gulp clean`
+This project using Gulp4 so we have to use npm scripts using local gulp. You can add `./node_modules/.bin` to PATH, to use local gulp.
 
-###Optional
-* [normalize.css](https://github.com/necolas/normalize.css) (download latest)
+To install Gulp4 globally:
 
-###License
-MIT
-[gulp-gold npm package link](https://www.npmjs.org/package/gulp-gold)
+```sh
+$ npm i -g gulpjs/gulp.git#4.0
+```
+
+## Usage
+### npm scripts (using local gulp)
+- `npm run build` just build with `NODE_ENV=production`
+- `npm run dev` serving from `src`
+- `npm run prod` serving from `dist`
+- `npm run lint:styles`
+- `npm run lint:scripts`
+
+### gulp tasks (require gulp4 installed globally)
+- `gulp serve` clean->lint->build->browsersync->watch in `src`
+- `gulp` clean->lint->build
+- `gulp lint:styles`
+- `gulp lint:scripts`
+- other tasks you can find in the [gulpfile](gulpfile.babel.js)
+
+## Optional
+- [normalize.css](https://github.com/necolas/normalize.css)
+
+## [MIT License](LICENSE.md)
