@@ -1,5 +1,3 @@
-'use strict';
-
 // note: ignored path 'src/**.min.**'
 
 import gulp from 'gulp';
@@ -20,7 +18,7 @@ const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
-console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`);
+// console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`);
 
 const webpackConfig = {
   entry: {
@@ -215,7 +213,7 @@ const watch = () => {
     notify: false,
     logPrefix: 'gg',
     https: true,
-    server: isDev ? 'dist' : 'src',
+    server: isDev ? 'src' : 'dist',
     // scrollElementMapping: ['main', '.mdl-layout'],
     // port: 3000,
     // browser: 'chrome',
