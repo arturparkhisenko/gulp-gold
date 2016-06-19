@@ -3,13 +3,14 @@
 > custom Gulp pack
 
 ## TL;DR
-Used latest tools: Gulp4, Babel6, Webpack2, PostCSS
+Used latest tools: Gulp4, Babel6, Webpack, PostCSS
 - Styles (css4) - [stylelint](http://stylelint.io/) -> [postCSS](https://www.npmjs.org/package/gulp-postcss)([postcss-import](https://www.npmjs.org/package/postcss-import), [postcss-url](https://www.npmjs.org/package/postcss-url), [cssnext](https://www.npmjs.org/package/postcss-cssnext)(autoprefixed), [cssnano](https://www.npmjs.org/package/cssnano))
 - Scripts (es2015) - [eslint](https://www.npmjs.org/package/eslint) -> [webpack](https://webpack.github.io/)([babel-loader](https://www.npmjs.org/package/babel-loader), [uglify-js](https://www.npmjs.org/package/gulp-uglify))
 - Images - minified/optimized([imagemin](https://www.npmjs.org/package/gulp-imagemin))
 - [Browsersync](https://www.npmjs.com/package/browser-sync)
 - Errors output improved by [plumber](https://www.npmjs.org/package/gulp-plumber)
 - I hope You enjoy :)
+- Waiting for a Webpack2 release!
 
 ## Installing
 - You must have [nodejs](http://nodejs.org/) (includes [npm](https://www.npmjs.org/)) installed
@@ -34,6 +35,7 @@ $ npm i -g gulpjs/gulp.git#4.0
 - `npm run prod` serving from `dist`
 - `npm run lint:styles`
 - `npm run lint:scripts`
+<!-- - `npm run validate:webpack` validate webpack2 config -->
 
 ### gulp tasks (require gulp4 installed globally)
 - `gulp serve` clean->lint->build->browsersync->watch in `src`
