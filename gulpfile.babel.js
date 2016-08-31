@@ -82,9 +82,9 @@ gulp.task('scripts', (done) => {
 gulp.task('styles', () =>
   gulp.src([
     'src/styles/main.css',
-    // ], { read: false }
   ], {
-    since: gulp.lastRun('styles'),
+    // read: false ,
+    // since: gulp.lastRun('styles'),
   })
   .pipe($.plumber())
   // .pipe($.newer('src/styles'))
@@ -98,7 +98,8 @@ gulp.task('styles', () =>
       url: 'inline',
     }),
     postcssCssnext({
-      browsers: '> 5%',
+      browsers: '> 1%, last 2 versions, Firefox ESR',
+      warnForDuplicates: false,
     }),
     cssnano({
       safe: true,
@@ -121,7 +122,7 @@ gulp.task('images', () =>
   gulp.src([
     'src/images/**/*',
   ], {
-    since: gulp.lastRun('images'),
+    // since: gulp.lastRun('images'),
   })
   .pipe($.imagemin({
     progressive: true,
@@ -141,7 +142,7 @@ gulp.task('copy', () =>
     '!src/precache.json',
   ], {
     dot: true,
-    since: gulp.lastRun('copy'),
+    // since: gulp.lastRun('copy'),
   }).pipe(gulp.dest('dist'))
   .pipe($.size({
     title: 'copy',
@@ -152,7 +153,7 @@ gulp.task('html', () =>
   gulp.src([
     'src/**/*.html',
   ], {
-    since: gulp.lastRun('html'),
+    // since: gulp.lastRun('html'),
   })
   // .pipe($.newer('dist/'))
   .pipe($.htmlmin({

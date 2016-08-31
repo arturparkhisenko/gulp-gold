@@ -25,7 +25,7 @@ $ sudo
 $ npm i
 ```
 
-This project uses Gulp4 so we should have `gulp-cli` installed to use npm scripts using local gulp:
+This project uses Gulp4 so we should have `gulp-cli` installed globally to use npm scripts using local gulp:
 
 ```sh
 $ npm i -g gulp-cli
@@ -42,7 +42,7 @@ $ npm i -g gulp-cli
 - `npm run lint:scripts`
 - `npm run validate:webpack` validate webpack2 config
 
-### gulp tasks (require gulp4 installed globally)
+### gulp tasks (require gulp-cli installed globally)
 
 - `gulp serve` clean->lint->build->browsersync->watch in `src`
 - `gulp` clean->lint->build
