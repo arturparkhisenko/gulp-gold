@@ -1,6 +1,6 @@
 # gulp-gold :wrench:, [npm link](https://www.npmjs.org/package/gulp-gold)
 
-[![devDependency Status](https://david-dm.org/arturparkhisenko/gulp-gold/dev-status.svg)](https://david-dm.org/arturparkhisenko/gulp-gold#info=devDependencies) [![GitHub release](https://img.shields.io/github/release/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/releases) [![GitHub license](https://img.shields.io/github/license/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/blob/master/LICENSE.md)
+[![dependencies Status](https://david-dm.org/arturparkhisenko/gulp-gold/status.svg)](https://david-dm.org/arturparkhisenko/gulp-gold) [![GitHub release](https://img.shields.io/github/release/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/releases) [![GitHub license](https://img.shields.io/github/license/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/blob/master/LICENSE.md)
 
 > custom Gulp pack
 
