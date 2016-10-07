@@ -13,7 +13,7 @@ import postcssUrl from 'postcss-url';
 import postcssCssnext from 'postcss-cssnext';
 import postcssBrowserReporter from 'postcss-browser-reporter';
 import postcssReporter from 'postcss-reporter';
-import webpackConfig from './webpack.config.js';
+import webpackConfig from './webpack.config';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
