@@ -1,0 +1,32 @@
+version: v1.5.0
+ignore:
+  'npm:connect:20130701':
+    - browser-sync > browser-sync-ui > weinre > express > connect:
+        reason: None given
+        expires: '2016-11-26T06:56:06.845Z'
+  'npm:express:20140912':
+    - browser-sync > browser-sync-ui > weinre > express:
+        reason: None given
+        expires: '2016-11-26T06:56:06.846Z'
+  'npm:handlebars:20151207':
+    - postcss-url > directory-encoder > handlebars:
+        reason: None given
+        expires: '2016-11-26T06:56:06.847Z'
+  'npm:qs:20140806':
+    - browser-sync > browser-sync-ui > weinre > express > qs:
+        reason: None given
+        expires: '2016-11-26T06:56:06.904Z'
+  'npm:qs:20140806-1':
+    - browser-sync > browser-sync-ui > weinre > express > qs:
+        reason: None given
+        expires: '2016-11-26T06:56:06.905Z'
+patch:
+  'npm:request:20160119':
+    - browser-sync > localtunnel > request:
+        patched: '2016-10-27T06:56:06.966Z'
+  'npm:tough-cookie:20160722':
+    - browser-sync > localtunnel > request > tough-cookie:
+        patched: '2016-10-27T06:56:06.966Z'
+  'npm:uglify-js:20151024':
+    - postcss-url > directory-encoder > handlebars > uglify-js:
+        patched: '2016-10-27T06:56:06.966Z'
