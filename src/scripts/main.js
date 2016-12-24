@@ -1,5 +1,7 @@
 import moduleExample from './module-example';
 
-// console.info('%c gulp-gold ', 'background: #333; color: #DCCD69');
+/* eslint-disable no-console */
+console.info('%c gulp-gold ', 'background: #333; color: #DCCD69');
+/* eslint-enable no-console */
 
 moduleExample();

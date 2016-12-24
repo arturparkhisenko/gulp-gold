@@ -1,20 +1,19 @@
 # gulp-gold :wrench:, [npm link](https://www.npmjs.org/package/gulp-gold)
 
-[![dependencies Status](https://david-dm.org/arturparkhisenko/gulp-gold/status.svg)](https://david-dm.org/arturparkhisenko/gulp-gold) [![GitHub release](https://img.shields.io/github/release/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/releases) [![GitHub license](https://img.shields.io/github/license/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/blob/master/LICENSE.md)
+[![GitHub license](https://img.shields.io/github/license/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/blob/master/LICENSE.md) [![GitHub release](https://img.shields.io/github/release/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/releases) [![dependencies Status](https://david-dm.org/arturparkhisenko/gulp-gold/status.svg)](https://david-dm.org/arturparkhisenko/gulp-gold) [![Known Vulnerabilities](https://snyk.io/test/github/arturparkhisenko/gulp-gold/badge.svg)](https://snyk.io/test/github/arturparkhisenko/gulp-gold)
 
 > custom Gulp pack
 
 ## TL;DR
 
-Used latest tools: Gulp4, Babel6, Webpack, PostCSS
+Used latest tools: Gulp4, Babel6, Webpack2, PostCSS
 
 - Styles (css4) - [stylelint](http://stylelint.io/) -> [postCSS](https://www.npmjs.org/package/gulp-postcss)([postcss-import](https://www.npmjs.org/package/postcss-import), [postcss-url](https://www.npmjs.org/package/postcss-url), [cssnext](https://www.npmjs.org/package/postcss-cssnext)(autoprefixed), [cssnano](https://www.npmjs.org/package/cssnano))
-- Scripts (es2015+) - [eslint](https://www.npmjs.org/package/eslint) -> [webpack](https://webpack.github.io/)([babel-loader](https://www.npmjs.org/package/babel-loader), [uglify-js](https://www.npmjs.org/package/gulp-uglify))
+- Scripts (es2015+) - [eslint](https://www.npmjs.org/package/eslint) -> [webpack2](https://webpack.js.org)([babel-loader](https://www.npmjs.org/package/babel-loader), [uglify-js](https://www.npmjs.org/package/gulp-uglify))
 - Images - minified/optimized([imagemin](https://www.npmjs.org/package/gulp-imagemin))
 - [Browsersync](https://www.npmjs.com/package/browser-sync)
 - Errors output improved by [plumber](https://www.npmjs.org/package/gulp-plumber)
 - I hope You enjoy :)
-- Waiting for a Webpack2 release!
 
 ## Installing
 
@@ -38,17 +37,16 @@ $ npm i -g gulp-cli
 - `npm run build` just build with `NODE_ENV=production`
 - `npm run dev` or `npm start` serving from `src`
 - `npm run prod` serving from `dist`
-- `npm run lint:styles`
-- `npm run lint:scripts`
-- `npm run validate:webpack` validate webpack2 config
+- `npm run lintStyles`
+- `npm run lintScripts`
 
 ### gulp tasks (require gulp-cli installed globally)
 
 - `gulp serve` clean->lint->build->browsersync->watch in `src`
 - `gulp` clean->lint->build
-- `gulp lint:styles`
-- `gulp lint:scripts`
-- other tasks you can find in the [gulpfile](gulpfile.babel.js)
+- `gulp lintStyles`
+- `gulp lintScripts`
+- other tasks you can find in the [gulpfile](gulpfile.js)
 
 ## Optional
 

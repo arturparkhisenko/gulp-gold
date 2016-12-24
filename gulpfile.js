@@ -1,73 +1,67 @@
 // note: ignored path 'src/**.min.**'
 
-import gulp from 'gulp';
-import del from 'del';
-// import path from 'path';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import browserSync from 'browser-sync';
-import webpack from 'webpack';
-import gulpStylelint from 'gulp-stylelint';
-import cssnano from 'cssnano';
-import postcssImport from 'postcss-import';
-import postcssUrl from 'postcss-url';
-import postcssCssnext from 'postcss-cssnext';
-import postcssBrowserReporter from 'postcss-browser-reporter';
-import postcssReporter from 'postcss-reporter';
-import webpackConfig from './webpack.config';
+const gulp = require('gulp');
+const del = require('del');
+// const path = require('path');
+const gulpLoadPlugins = require('gulp-load-plugins');
+const browserSync = require('browser-sync');
+const cssnano = require('cssnano');
+const postcssImport = require('postcss-import');
+const postcssUrl = require('postcss-url');
+const postcssCssnext = require('postcss-cssnext');
+const postcssReporter = require('postcss-reporter');
+const postcssBrowserReporter = require('postcss-browser-reporter');
+const webpack = require('webpack');
+const webpackConfig = require('./webpack.config');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
-// console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`);
+console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`); // eslint-disable-line
 
-gulp.task('clean', () => del(['.tmp', 'dist'], {
-  dot: true,
-}));
+const clean = () => del(['.tmp', 'dist']);
 
-gulp.task('lint:scripts', () =>
+const lintScripts = () =>
   gulp.src([
     'src/scripts/**/*.js',
     // 'src/**/*.html',
-    'gulpfile.babel.js',
+    'gulpfile.js',
     '!src/scripts/**/*.min.js',
     '!node_modules/**',
   ])
   .pipe($.eslint())
   .pipe($.eslint.format())
-  // .pipe($.eslint.failAfterError())
   // .pipe($.if(!browserSync.active, $.eslint.failOnError()));
-);
+;
 
-// consoleReporter(),
-gulp.task('lint:styles', () =>
+const lintStyles = () =>
   gulp.src([
     'src/styles/**/*.css',
     '!src/styles/**/*.min.css',
   ])
-  // .pipe($.stylelint({
-  .pipe(gulpStylelint({
+  .pipe($.stylelint({
     // failAfterError: true,
     reporters: [{
       formatter: 'verbose',
       console: true,
     }],
     debug: true,
-  }))
-);
+  }));
 
-// entry is './src/scripts/main.js'
-gulp.task('scripts', (done) => {
+const scripts = (done) => {
   webpack(webpackConfig, (err, stats) => {
     if (err) {
       throw new $.util.PluginError('webpack', err);
     }
+
     $.util.log('[webpack]', stats.toString({
       // output options
       // https://github.com/webpack/docs/wiki/node.js-api
       chunks: false,
       colors: true,
     }));
+
     $.util.log('[webpack]', 'Packed successfully!');
 
     gulp.src([
@@ -77,9 +71,9 @@ gulp.task('scripts', (done) => {
   });
 
   done();
-});
+};
 
-gulp.task('styles', () =>
+const styles = () =>
   gulp.src([
     'src/styles/main.css',
   ], {
@@ -115,10 +109,9 @@ gulp.task('styles', () =>
   .pipe(gulp.dest('dist/styles/'))
   .pipe($.size({
     title: 'styles',
-  }))
-);
+  }));
 
-gulp.task('images', () =>
+const images = () =>
   gulp.src([
     'src/images/**/*',
   ], {
@@ -131,10 +124,9 @@ gulp.task('images', () =>
   .pipe(gulp.dest('dist/images/'))
   .pipe($.size({
     title: 'images',
-  }))
-);
+  }));
 
-gulp.task('copy', () =>
+const copy = () =>
   gulp.src([
     // 'src/**/*.{html,ico}',
     'src/**/*.{txt,ico}',
@@ -146,10 +138,9 @@ gulp.task('copy', () =>
   }).pipe(gulp.dest('dist'))
   .pipe($.size({
     title: 'copy',
-  }))
-);
+  }));
 
-gulp.task('html', () =>
+const html = () =>
   gulp.src([
     'src/**/*.html',
   ], {
@@ -163,47 +154,46 @@ gulp.task('html', () =>
   .pipe(gulp.dest('dist/'))
   .pipe($.size({
     title: 'html',
-  }))
-);
+  }));
 
 const watch = () => {
   browserSync({
     notify: false,
     logPrefix: 'gg',
-    https: true,
     server: isDev ? 'src' : 'dist',
+    https: true,
+    // port: 443,
     // scrollElementMapping: ['main', '.mdl-layout'],
-    // port: 3000,
     // browser: 'chrome',
   });
 
-  gulp.watch(['src/**/*.html'], gulp.series('html', reload));
+  gulp.watch(['src/**/*.html'], gulp.series(html, reload));
   gulp.watch([
     'src/styles/**/*.css', '!src/styles/**/*.min.css',
-  ], gulp.series('lint:styles', 'styles', reload));
+  ], gulp.series(lintStyles, styles, reload));
   gulp.watch([
     'src/scripts/**/*.js', '!src/scripts/**/*.min.js',
-  ], gulp.series('lint:scripts', 'scripts', reload));
-  gulp.watch(['src/images/**/*'], gulp.series('images', reload));
+  ], gulp.series(lintScripts, scripts, reload));
+  gulp.watch(['src/images/**/*'], gulp.series(images, reload));
 };
 
-gulp.task('serve',
-  gulp.series('clean',
-    gulp.parallel(
-      gulp.series('lint:scripts', 'scripts'),
-      gulp.series('lint:styles', 'styles'),
-      'images', 'copy'
-    ),
-    'html',
-    watch
-  )
-);
+const serve = () => gulp.series(clean,
+  gulp.parallel(
+    gulp.series(lintScripts, scripts),
+    gulp.series(lintStyles, styles),
+    images, copy), html, watch)();
 
 // Build production files, the default task
-gulp.task('default', gulp.series('clean',
+const build = () => gulp.series(clean,
   gulp.parallel(
-    gulp.series('lint:scripts', 'scripts'),
-    gulp.series('lint:styles', 'styles'),
-    'images', 'copy', 'html'
-  )
-));
+    gulp.series(lintScripts, scripts),
+    gulp.series(lintStyles, styles),
+    images, copy, html))();
+
+exports.lintScripts = lintScripts;
+exports.lintStyles = lintStyles;
+exports.serve = serve;
+exports.default = build;
+
+// export { serve, lintScripts, lintStyles };
+// export default build;

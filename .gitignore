@@ -62,4 +62,4 @@ $RECYCLE.BIN/
 dist/
 tmp/
 src/bower_components/
-src/**.min.**
+*.min.*

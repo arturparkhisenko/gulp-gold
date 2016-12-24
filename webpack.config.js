@@ -1,8 +1,8 @@
-import { resolve } from 'path';
-import webpack from 'webpack';
+const path = require('path');
+const webpack = require('webpack');
 
-export default {
-  context: resolve(__dirname, 'src'),
+module.exports = {
+  context: path.resolve(__dirname, 'src'),
   entry: {
     main: [
       './scripts/main.js',
@@ -12,40 +12,38 @@ export default {
   // devtool: 'cheap-module-eval-source-map',
   watch: false,
   output: {
-    path: resolve(__dirname, './src/scripts'),
+    path: path.resolve(__dirname, './src/scripts'),
     filename: '[name].min.js',
   },
-  // See: http://webpack.github.io/docs/configuration.html#resolve
   resolve: {
-    extensions: ['', '.js'],
-    // modules: [
-    //   path.resolve('./src/scripts'),
-    //   'node_modules',
-    // ],
+    modules: [
+      path.resolve(__dirname, 'src'),
+      'node_modules',
+    ],
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
       // https://github.com/babel/babel-loader#options
-      loader: 'babel',
-      // loader: 'babel?presets[]=es2015&cacheDirectory=true',
-      query: {
-        // presets: ['es2015'],
-        presets: [require.resolve('babel-preset-es2015')],
+      use: 'babel-loader',
+      options: {
+        presets: ['babel-preset-env'],
         cacheDirectory: true,
       },
     }],
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    // for "webpack": "^2.1.0-beta.13",
-    // new webpack.LoaderOptionsPlugin({
-    //   minimize: true,
-    //   debug: false,
-    // }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
+      options: {
+        context: __dirname,
+      },
+    }),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       // warnings: false,
       compress: { // or compressor
         warnings: false,
