@@ -184,11 +184,13 @@ const serve = () => gulp.series(clean,
     images, copy), html, watch)();
 
 // Build production files, the default task
-const build = () => gulp.series(clean,
-  gulp.parallel(
-    gulp.series(lintScripts, scripts),
-    gulp.series(lintStyles, styles),
-    images, copy, html))();
+const build = (cb) => {
+  gulp.series(clean,
+    gulp.parallel(
+      gulp.series(lintScripts, scripts),
+      gulp.series(lintStyles, styles),
+      images, copy, html))(cb);
+};
 
 exports.lintScripts = lintScripts;
 exports.lintStyles = lintStyles;

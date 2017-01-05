@@ -26,7 +26,7 @@ module.exports = {
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
       // https://github.com/babel/babel-loader#options
-      use: 'babel-loader',
+      loader: 'babel-loader',
       options: {
         presets: ['babel-preset-env'],
         cacheDirectory: true,
