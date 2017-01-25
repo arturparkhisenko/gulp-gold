@@ -26,11 +26,15 @@ module.exports = {
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
       // https://github.com/babel/babel-loader#options
-      loader: 'babel-loader',
-      options: {
-        presets: ['babel-preset-env'],
-        cacheDirectory: true,
-      },
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['babel-preset-env'],
+            cacheDirectory: true,
+          },
+        },
+      ],
     }],
   },
   plugins: [

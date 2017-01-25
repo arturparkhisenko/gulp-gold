@@ -37,11 +37,18 @@
   },
   "babel": {
     "presets": [
-      ["env", {
-        "targets": {
-          "browsers": ["last 2 versions", "safari >= 7", ">3%"]
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": [
+              "last 2 versions",
+              "safari >= 7",
+              ">3%"
+            ]
+          }
         }
-      }]
+      ]
     ]
   },
   "license": "MIT",
@@ -55,14 +62,16 @@
     "lintScripts": "gulp lintScripts"
   },
   "dependencies": {
+    "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
-    "babel-preset-env": "^1.1.5",
-    "browser-sync": "^2.18.5",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-env": "^1.1.8",
+    "browser-sync": "^2.18.6",
     "cssnano": "^3.10.0",
     "del": "^2.2.2",
-    "eslint": "^3.12.2",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-html": "^1.7.0",
+    "eslint": "^3.14.0",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-html": "^2.0.0",
     "eslint-plugin-import": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-eslint": "^3.0.1",
@@ -73,18 +82,18 @@
     "gulp-minify-inline": "^0.2.1",
     "gulp-newer": "^1.3.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.2.0",
+    "gulp-postcss": "^6.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-size": "^2.1.0",
-    "gulp-sourcemaps": "^2.2.1",
+    "gulp-sourcemaps": "^2.4.0",
     "gulp-stylelint": "^3.7.0",
     "gulp-util": "^3.0.8",
     "postcss-browser-reporter": "^0.5.0",
     "postcss-cssnext": "^2.9.0",
-    "postcss-import": "^9.0.0",
+    "postcss-import": "^9.1.0",
     "postcss-reporter": "^3.0.0",
     "postcss-url": "^5.1.2",
     "stylelint-config-standard": "^15.0.1",
-    "webpack": "2.2.0-rc.3"
+    "webpack": "^2.2.0"
   }
 }
