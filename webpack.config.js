@@ -38,7 +38,7 @@ module.exports = {
     }],
   },
   plugins: [
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,
@@ -51,6 +51,7 @@ module.exports = {
       // warnings: false,
       compress: { // or compressor
         warnings: false,
+        drop_console: false,
         // pure_getters: true,
         // unsafe: true,
         // unsafe_comps: true, // not documented
