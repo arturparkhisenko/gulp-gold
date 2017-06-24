@@ -59,7 +59,9 @@
     "dev": "set NODE_ENV=development&&gulp serve",
     "prod": "set NODE_ENV=production&&gulp serve",
     "lintStyles": "gulp lintStyles",
-    "lintScripts": "gulp lintScripts"
+    "lintScripts": "gulp lintScripts",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "babel-core": "^6.25.0",
@@ -93,6 +95,8 @@
     "postcss-reporter": "^4.0.0",
     "postcss-url": "^7.0.0",
     "stylelint-config-standard": "^16.0.0",
-    "webpack": "^3.0.0"
-  }
+    "webpack": "^3.0.0",
+    "snyk": "^1.36.0"
+  },
+  "snyk": true
 }
