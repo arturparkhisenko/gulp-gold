@@ -30,9 +30,9 @@ const lintScripts = () =>
     '!src/scripts/**/*.min.js',
     '!node_modules/**',
   ])
-  .pipe($.eslint())
-  .pipe($.eslint.format())
-  // .pipe($.if(!browserSync.active, $.eslint.failOnError()));
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    // .pipe($.if(!browserSync.active, $.eslint.failOnError()))
 ;
 
 const lintStyles = () =>
@@ -40,14 +40,14 @@ const lintStyles = () =>
     'src/styles/**/*.css',
     '!src/styles/**/*.min.css',
   ])
-  .pipe($.stylelint({
-    // failAfterError: true,
-    reporters: [{
-      formatter: 'verbose',
-      console: true,
-    }],
-    debug: true,
-  }));
+    .pipe($.stylelint({
+      // failAfterError: true,
+      reporters: [{
+        formatter: 'verbose',
+        console: true,
+      }],
+      debug: true,
+    }));
 
 const scripts = (done) => {
   webpack(webpackConfig, (err, stats) => {
@@ -80,36 +80,36 @@ const styles = () =>
     // read: false ,
     // since: gulp.lastRun('styles'),
   })
-  .pipe($.plumber())
-  // .pipe($.newer('src/styles'))
-  .pipe($.sourcemaps.init())
-  .pipe($.postcss([
-    postcssImport({
-      // path: ['src/styles/**/*'],
-      // from: 'src/styles/main.css',
-    }),
-    postcssUrl({
-      url: 'inline',
-    }),
-    postcssCssnext({
-      browsers: '> 1%, last 2 versions, Firefox ESR',
-      warnForDuplicates: false,
-    }),
-    cssnano({
-      safe: true,
-    }),
-    postcssBrowserReporter(),
-    postcssReporter(),
-  ]))
-  .pipe($.rename({
-    suffix: '.min',
-  }))
-  .pipe($.sourcemaps.write('./'))
-  .pipe(gulp.dest('src/styles/'))
-  .pipe(gulp.dest('dist/styles/'))
-  .pipe($.size({
-    title: 'styles',
-  }));
+    .pipe($.plumber())
+    // .pipe($.newer('src/styles'))
+    .pipe($.sourcemaps.init())
+    .pipe($.postcss([
+      postcssImport({
+        // path: ['src/styles/**/*'],
+        // from: 'src/styles/main.css',
+      }),
+      postcssUrl({
+        url: 'inline',
+      }),
+      postcssCssnext({
+        browsers: '> 1%, last 2 versions, Firefox ESR',
+        warnForDuplicates: false,
+      }),
+      cssnano({
+        safe: true,
+      }),
+      postcssBrowserReporter(),
+      postcssReporter(),
+    ]))
+    .pipe($.rename({
+      suffix: '.min',
+    }))
+    .pipe($.sourcemaps.write('./'))
+    .pipe(gulp.dest('src/styles/'))
+    .pipe(gulp.dest('dist/styles/'))
+    .pipe($.size({
+      title: 'styles',
+    }));
 
 const images = () =>
   gulp.src([
@@ -117,14 +117,14 @@ const images = () =>
   ], {
     // since: gulp.lastRun('images'),
   })
-  .pipe($.imagemin({
-    progressive: true,
-    interlaced: true,
-  }))
-  .pipe(gulp.dest('dist/images/'))
-  .pipe($.size({
-    title: 'images',
-  }));
+    .pipe($.imagemin({
+      progressive: true,
+      interlaced: true,
+    }))
+    .pipe(gulp.dest('dist/images/'))
+    .pipe($.size({
+      title: 'images',
+    }));
 
 const copy = () =>
   gulp.src([
@@ -136,9 +136,9 @@ const copy = () =>
     dot: true,
     // since: gulp.lastRun('copy'),
   }).pipe(gulp.dest('dist'))
-  .pipe($.size({
-    title: 'copy',
-  }));
+    .pipe($.size({
+      title: 'copy',
+    }));
 
 const html = () =>
   gulp.src([
@@ -146,15 +146,15 @@ const html = () =>
   ], {
     // since: gulp.lastRun('html'),
   })
-  // .pipe($.newer('dist/'))
-  .pipe($.htmlmin({
-    collapseWhitespace: true,
-  }))
-  .pipe($.minifyInline())
-  .pipe(gulp.dest('dist/'))
-  .pipe($.size({
-    title: 'html',
-  }));
+    // .pipe($.newer('dist/'))
+    .pipe($.htmlmin({
+      collapseWhitespace: true,
+    }))
+    .pipe($.minifyInline())
+    .pipe(gulp.dest('dist/'))
+    .pipe($.size({
+      title: 'html',
+    }));
 
 const watch = () => {
   browserSync({

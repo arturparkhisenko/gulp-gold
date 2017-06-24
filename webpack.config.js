@@ -26,40 +26,40 @@ module.exports = {
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
       // https://github.com/babel/babel-loader#options
-      use: [
-        {
-          loader: 'babel-loader',
-          options: {
-            presets: ['babel-preset-env'],
-            cacheDirectory: true,
-          },
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          presets: [['env', {
+            targets: {
+              browsers: [
+                'last 2 versions',
+                'safari >= 7',
+                '>3%',
+              ],
+            },
+            modules: false,
+            loose: true,
+          }]],
+          cacheDirectory: true,
         },
-      ],
+      }],
     }],
   },
   plugins: [
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-      options: {
-        context: __dirname,
-      },
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor', // Specify the common bundle's name.
+    //   // children: true, // use all children of the chunk
+    //   // async: true // create an async commons chunk
+    // }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
-      // warnings: false,
       compress: { // or compressor
         warnings: false,
         drop_console: false,
-        // pure_getters: true,
-        // unsafe: true,
-        // unsafe_comps: true, // not documented
-        // screw_ie8: true // not documented
       },
       output: {
         comments: false,
-        // semicolons: true
       },
     }),
   ],
