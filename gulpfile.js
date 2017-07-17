@@ -15,7 +15,7 @@ const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 
 const $ = gulpLoadPlugins();
-const reload = browserSync.reload;
+const server = browserSync.create();
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
 console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`); // eslint-disable-line
@@ -57,8 +57,9 @@ const scripts = (done) => {
 
     $.util.log('[webpack]', stats.toString({
       // output options
-      // https://github.com/webpack/docs/wiki/node.js-api
+      // https://webpack.js.org/configuration/stats/
       chunks: false,
+      // modules: false,
       colors: true,
     }));
 
@@ -156,8 +157,13 @@ const html = () =>
       title: 'html',
     }));
 
+const reload = (done) => {
+  server.reload();
+  done();
+};
+
 const watch = () => {
-  browserSync({
+  server.init({
     notify: false,
     logPrefix: 'gg',
     server: isDev ? 'src' : 'dist',

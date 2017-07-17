@@ -6,7 +6,7 @@
 
 ## TL;DR
 
-Used latest tools: Gulp4, Babel6, Webpack2, PostCSS
+Used latest tools: Gulp, Babel, Webpack, PostCSS
 
 - Styles (css4) - [stylelint](http://stylelint.io/) -> [postCSS](https://www.npmjs.org/package/gulp-postcss)([postcss-import](https://www.npmjs.org/package/postcss-import), [postcss-url](https://www.npmjs.org/package/postcss-url), [cssnext](https://www.npmjs.org/package/postcss-cssnext)(autoprefixed), [cssnano](https://www.npmjs.org/package/cssnano))
 - Scripts (es2015+) - [eslint](https://www.npmjs.org/package/eslint) -> [webpack](https://webpack.js.org)([babel-loader](https://www.npmjs.org/package/babel-loader), [babel-preset-env](https://www.npmjs.com/package/babel-preset-env), [uglify-js](https://www.npmjs.org/package/gulp-uglify))
@@ -17,14 +17,14 @@ Used latest tools: Gulp4, Babel6, Webpack2, PostCSS
 
 ## Installing
 
-- You must have [nodejs](http://nodejs.org/) (includes [npm](https://www.npmjs.org/)) installed
+- You must have [nodejs](https://nodejs.org/) (includes [npm](https://www.npmjs.org/)) installed
 
 ```sh
 $ sudo
 $ npm i
 ```
 
-This project uses Gulp4 so we should have `gulp-cli` installed globally to use npm scripts using local gulp:
+This project uses Gulp4 so we should have `gulp-cli` or `npx` (goes with npm v5.3.0+) installed globally to use npm scripts using local gulp:
 
 ```sh
 $ npm i -g gulp-cli
