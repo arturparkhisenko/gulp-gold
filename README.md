@@ -1,6 +1,6 @@
 # gulp-gold :wrench:, [npm link](https://www.npmjs.org/package/gulp-gold)
 
-[![GitHub license](https://img.shields.io/github/license/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/blob/master/LICENSE.md) [![GitHub release](https://img.shields.io/github/release/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/releases) [![dependencies Status](https://david-dm.org/arturparkhisenko/gulp-gold/status.svg)](https://david-dm.org/arturparkhisenko/gulp-gold) [![Known Vulnerabilities](https://snyk.io/test/github/arturparkhisenko/gulp-gold/badge.svg)](https://snyk.io/test/github/arturparkhisenko/gulp-gold)
+[![GitHub license](https://img.shields.io/github/license/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/blob/master/LICENSE.md) [![GitHub release](https://img.shields.io/github/release/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/releases) [![dependencies Status](https://david-dm.org/arturparkhisenko/gulp-gold/dev-status.svg)](https://david-dm.org/arturparkhisenko/gulp-gold?type=dev) [![Known Vulnerabilities](https://snyk.io/test/github/arturparkhisenko/gulp-gold/badge.svg)](https://snyk.io/test/github/arturparkhisenko/gulp-gold)
 
 > custom Gulp pack
 
