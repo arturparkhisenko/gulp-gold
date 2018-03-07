@@ -8,17 +8,19 @@ const browserSync = require('browser-sync');
 const cssnano = require('cssnano');
 const postcssImport = require('postcss-import');
 const postcssUrl = require('postcss-url');
+const postcssPresetEnv = require('postcss-preset-env');
 const postcssCssnext = require('postcss-cssnext');
 const postcssReporter = require('postcss-reporter');
 const postcssBrowserReporter = require('postcss-browser-reporter');
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
+const pkg = require('./package.json');
 
 const $ = gulpLoadPlugins();
 const server = browserSync.create();
 const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
-console.log(`process.env.NODE_ENV = ${process.env.NODE_ENV}`); // eslint-disable-line
+console.log(`v${pkg.version}, process.env.NODE_ENV = ${process.env.NODE_ENV}`); // eslint-disable-line
 
 const clean = () => del(['.tmp', 'dist']);
 
@@ -94,9 +96,11 @@ const styles = () =>
         postcssUrl({
           url: 'inline'
         }),
+        postcssPresetEnv({
+          stage: 0, // default is 3
+        }),
         postcssCssnext({
-          browsers: '> 1%, last 2 versions, Firefox ESR',
-          warnForDuplicates: false
+          warnForDuplicates: false,
         }),
         cssnano({
           safe: true

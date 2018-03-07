@@ -6,10 +6,8 @@
 
 body {
   font-family: var(--brandFont);
-  color: var(--moduleColor);
-  font-size: var(--module-size);
-  /*color: var(--moduleColor, #333);
-  font-size: var(--module-size, 2em);*/
+  color: color-mod(var(--moduleColor) alpha(80%));
+  font-size: var(--module-size, 2em);
 }
 
 main {
@@ -17,6 +15,8 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background-color: var(--moduleBGColor);
+  padding: 1em;
 }
 
 footer {

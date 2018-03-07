@@ -11,20 +11,16 @@
     "url": "https://github.com/arturparkhisenko/gulp-gold/issues"
   },
   "keywords": [
+    "html",
+    "css",
+    "js",
     "build",
-    "stream",
-    "system",
-    "make",
     "tool",
     "asset",
-    "pipeline",
-    "js",
     "babel",
     "es6",
     "es2015",
     "webpack",
-    "css",
-    "html",
     "postcss",
     "cssnext",
     "css4",
@@ -32,8 +28,8 @@
   ],
   "engineStrict": true,
   "engines": {
-    "node": ">= 6.9.0",
-    "npm": ">= 3.10.8"
+    "node": ">= 8.10.0",
+    "npm": ">= 5.6.0"
   },
   "babel": {
     "presets": [
@@ -43,61 +39,73 @@
           "targets": {
             "browsers": [
               "last 2 versions",
-              "safari >= 7",
-              ">3%"
+              ">1%"
             ]
-          }
+          },
+          "modules": false,
+          "loose": true
         }
       ]
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "transform-class-properties"
     ]
   },
   "license": "MIT",
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
-    "build": "set NODE_ENV=production&&gulp",
-    "start": "set NODE_ENV=development&&gulp serve",
-    "dev": "set NODE_ENV=development&&gulp serve",
-    "prod": "set NODE_ENV=production&&gulp serve",
+    "build": "cross-env NODE_ENV=production gulp",
+    "start": "cross-env NODE_ENV=development gulp serve",
+    "dev": "cross-env NODE_ENV=development gulp serve",
+    "prod": "cross-env NODE_ENV=production gulp serve",
     "lintStyles": "gulp lintStyles",
     "lintScripts": "gulp lintScripts",
-    "formatScripts": "prettier --write ./src/scripts/**/*.js",
+    "formatScripts": "prettier-eslint --write ./src/scripts/**/*.js",
     "np": "np --no-yarn"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "browser-sync": "^2.23.3",
+    "browser-sync": "^2.23.6",
+    "cross-env": "^5.1.3",
     "cssnano": "^3.10.0",
     "del": "^3.0.0",
-    "eslint": "^4.14.0",
+    "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-html": "^4.0.1",
-    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-import": "^2.9.0",
     "gulp": "^4.0.0",
-    "gulp-eslint": "^4.0.1",
+    "gulp-eslint": "^4.0.2",
     "gulp-htmlmin": "^4.0.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.1.0",
     "gulp-load-plugins": "^1.5.0",
     "gulp-minify-inline": "^1.0.0",
     "gulp-newer": "^1.4.0",
-    "gulp-plumber": "^1.1.0",
+    "gulp-plumber": "^1.2.0",
     "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-size": "^3.0.0",
-    "gulp-sourcemaps": "^2.6.3",
-    "gulp-stylelint": "^6.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-stylelint": "^7.0.0",
     "gulp-util": "^3.0.8",
     "postcss-browser-reporter": "^0.5.0",
-    "postcss-cssnext": "^3.0.2",
-    "postcss-import": "^11.0.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^11.1.0",
+    "postcss-preset-env": "^3.2.2",
     "postcss-reporter": "^5.0.0",
-    "postcss-url": "^7.3.0",
-    "prettier": "^1.9.2",
-    "stylelint": "^8.4.0",
-    "stylelint-config-standard": "^18.0.0",
-    "webpack": "^3.10.0"
+    "postcss-url": "^7.3.1",
+    "prettier-eslint-cli": "^4.7.1",
+    "stylelint": "^9.1.1",
+    "stylelint-config-standard": "^18.2.0",
+    "webpack": "^4.1.1",
+    "webpack-bundle-analyzer": "^2.11.1",
+    "webpack-cli": "^2.0.10"
   }
 }
