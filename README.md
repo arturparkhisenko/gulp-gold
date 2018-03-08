@@ -9,8 +9,8 @@
 Used latest tools: Gulp, Babel, Webpack, PostCSS
 
 - Styles - [stylelint](https://stylelint.io/) -> [postCSS](https://www.npmjs.org/package/gulp-postcss)([postcss-import](https://www.npmjs.org/package/postcss-import), [postcss-url](https://www.npmjs.org/package/postcss-url), [postcss-preset-env](https://www.npmjs.org/package/postcss-preset-env), [cssnext](https://www.npmjs.org/package/postcss-cssnext)(autoprefixed), [cssnano](https://www.npmjs.org/package/cssnano))
-- Scripts - [eslint](https://www.npmjs.org/package/eslint) -> [webpack4](https://webpack.js.org)([babel-preset-env](https://www.npmjs.com/package/babel-preset-env), [uglify-js](https://www.npmjs.org/package/gulp-uglify),[prettier](https://prettier.io/))
-- Images - ([imagemin](https://www.npmjs.org/package/gulp-imagemin))
+- Scripts - [eslint](https://www.npmjs.org/package/eslint) -> [webpack4](https://webpack.js.org)([babel-preset-env](https://www.npmjs.com/package/babel-preset-env)) -> [prettier](https://prettier.io/)
+- Images - [imagemin](https://www.npmjs.org/package/gulp-imagemin)
 - [Browsersync](https://www.npmjs.com/package/browser-sync)
 - Errors output improved by [plumber](https://www.npmjs.org/package/gulp-plumber)
 - I hope You enjoy :)
@@ -20,7 +20,6 @@ Used latest tools: Gulp, Babel, Webpack, PostCSS
 - You must have [nodejs](https://nodejs.org/) (includes [npm](https://www.npmjs.org/)) installed
 
 ```sh
-$ sudo
 $ npm i
 ```
 
