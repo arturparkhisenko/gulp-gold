@@ -4,6 +4,8 @@ const gulp = require('gulp');
 const del = require('del');
 // const path = require('path');
 const gulpLoadPlugins = require('gulp-load-plugins');
+const PluginError = require('plugin-error');
+const fancyLog = require('fancy-log');
 const browserSync = require('browser-sync');
 const cssnano = require('cssnano');
 const postcssImport = require('postcss-import');
@@ -33,12 +35,15 @@ const lintScripts = () =>
       '!src/scripts/**/*.min.js',
       '!node_modules/**'
     ])
+    .pipe($.plumber())
     .pipe($.eslint())
     .pipe($.eslint.format());
 // .pipe($.if(!browserSync.active, $.eslint.failOnError()));
 
 const lintStyles = () =>
-  gulp.src(['src/styles/**/*.css', '!src/styles/**/*.min.css']).pipe(
+  gulp.src(['src/styles/**/*.css', '!src/styles/**/*.min.css'])
+  .pipe($.plumber())
+  .pipe(
     $.stylelint({
       // failAfterError: true,
       reporters: [
@@ -54,10 +59,10 @@ const lintStyles = () =>
 const scripts = done => {
   webpack(webpackConfig, (err, stats) => {
     if (err) {
-      throw new $.util.PluginError('webpack', err);
+      throw new PluginError('webpack', err);
     }
 
-    $.util.log(
+    fancyLog(
       '[webpack]',
       stats.toString({
         // output options
@@ -68,7 +73,7 @@ const scripts = done => {
       })
     );
 
-    $.util.log('[webpack]', 'Packed successfully!');
+    fancyLog('[webpack]', 'Packed successfully!');
 
     gulp
       .src(['./src/scripts/main.min.js', './src/scripts/main.min.js.map'])
@@ -128,6 +133,7 @@ const images = () =>
     .src(['src/images/**/*'], {
       // since: gulp.lastRun('images'),
     })
+    .pipe($.plumber())
     .pipe(
       $.imagemin({
         progressive: true,
@@ -155,6 +161,7 @@ const copy = () =>
         // since: gulp.lastRun('copy'),
       }
     )
+    .pipe($.plumber())
     .pipe(gulp.dest('dist'))
     .pipe(
       $.size({
@@ -167,6 +174,7 @@ const html = () =>
     .src(['src/**/*.html'], {
       // since: gulp.lastRun('html'),
     })
+    .pipe($.plumber())
     // .pipe($.newer('dist/'))
     .pipe(
       $.htmlmin({
