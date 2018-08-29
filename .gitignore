@@ -61,5 +61,4 @@ $RECYCLE.BIN/
 .vagrant
 dist/
 tmp/
-src/bower_components/
 *.min.*

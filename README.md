@@ -20,13 +20,13 @@ Used latest tools: Gulp, Babel, Webpack, PostCSS
 - You must have [nodejs](https://nodejs.org/) (includes [npm](https://www.npmjs.org/)) installed
 
 ```sh
-$ npm i
+npm i
 ```
 
 This project uses Gulp4 so we should have `gulp-cli` or `npx` (goes with npm v5.3.0+) installed globally to use npm scripts using local gulp:
 
 ```sh
-$ npm i -g gulp-cli
+npm i -g gulp-cli
 ```
 
 ## Usage
