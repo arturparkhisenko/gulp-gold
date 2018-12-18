@@ -2,15 +2,6 @@
 ##################
 node_modules
 
-# Compiled source #
-###################
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-
 # Packages #
 ############
 *.7z
@@ -25,8 +16,6 @@ node_modules
 # Logs and databases #
 ######################
 *.log
-*.sql
-*.sqlite
 
 # OS generated files #
 ######################
@@ -51,14 +40,10 @@ $RECYCLE.BIN/
 #######################
 .gitconfig.local
 
-# Compiled Python files #
-#########################
-*.pyc
-
 # Other #
 #########
 .idea
-.vagrant
+.vscode
 dist/
 tmp/
 *.min.*

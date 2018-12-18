@@ -2,7 +2,6 @@
 
 const gulp = require('gulp');
 const del = require('del');
-// const path = require('path');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const PluginError = require('plugin-error');
 const fancyLog = require('fancy-log');
@@ -11,7 +10,6 @@ const cssnano = require('cssnano');
 const postcssImport = require('postcss-import');
 const postcssUrl = require('postcss-url');
 const postcssPresetEnv = require('postcss-preset-env');
-const postcssCssnext = require('postcss-cssnext');
 const postcssReporter = require('postcss-reporter');
 const postcssBrowserReporter = require('postcss-browser-reporter');
 const webpack = require('webpack');
@@ -87,10 +85,9 @@ const styles = () =>
   gulp
     .src(['src/styles/main.css'], {
       // read: false ,
-      // since: gulp.lastRun('styles'),
+      // since: gulp.lastRun(styles),
     })
     .pipe($.plumber())
-    // .pipe($.newer('src/styles'))
     .pipe($.sourcemaps.init())
     .pipe(
       $.postcss([
@@ -103,9 +100,6 @@ const styles = () =>
         }),
         postcssPresetEnv({
           stage: 0, // default is 3
-        }),
-        postcssCssnext({
-          warnForDuplicates: false,
         }),
         cssnano({
           safe: true
@@ -131,7 +125,7 @@ const styles = () =>
 const images = () =>
   gulp
     .src(['src/images/**/*'], {
-      // since: gulp.lastRun('images'),
+      // since: gulp.lastRun(images),
     })
     .pipe($.plumber())
     .pipe(
@@ -158,7 +152,7 @@ const copy = () =>
       ],
       {
         dot: true
-        // since: gulp.lastRun('copy'),
+        // since: gulp.lastRun(copy),
       }
     )
     .pipe($.plumber())
@@ -172,16 +166,17 @@ const copy = () =>
 const html = () =>
   gulp
     .src(['src/**/*.html'], {
-      // since: gulp.lastRun('html'),
+      // since: gulp.lastRun(html),
     })
     .pipe($.plumber())
-    // .pipe($.newer('dist/'))
     .pipe(
       $.htmlmin({
-        collapseWhitespace: true
+        collapseWhitespace: true,
+        // minifyCSS: true,
+        // minifyJS: true,
+        // removeComments: false
       })
     )
-    .pipe($.minifyInline())
     .pipe(gulp.dest('dist/'))
     .pipe(
       $.size({
@@ -247,7 +242,9 @@ const build = cb => {
 exports.lintScripts = lintScripts;
 exports.lintStyles = lintStyles;
 exports.serve = serve;
+exports.build = build;
+
 exports.default = build;
 
-// export { serve, lintScripts, lintStyles };
+// export { build, serve, lintScripts, lintStyles };
 // export default build;
