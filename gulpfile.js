@@ -39,20 +39,21 @@ const lintScripts = () =>
 // .pipe($.if(!browserSync.active, $.eslint.failOnError()));
 
 const lintStyles = () =>
-  gulp.src(['src/styles/**/*.css', '!src/styles/**/*.min.css'])
-  .pipe($.plumber())
-  .pipe(
-    $.stylelint({
-      // failAfterError: true,
-      reporters: [
-        {
-          formatter: 'verbose',
-          console: true
-        }
-      ],
-      debug: true
-    })
-  );
+  gulp
+    .src(['src/styles/**/*.css', '!src/styles/**/*.min.css'])
+    .pipe($.plumber())
+    .pipe(
+      $.stylelint({
+        // failAfterError: true,
+        reporters: [
+          {
+            formatter: 'verbose',
+            console: true
+          }
+        ],
+        debug: true
+      })
+    );
 
 const scripts = done => {
   webpack(webpackConfig, (err, stats) => {
@@ -99,7 +100,7 @@ const styles = () =>
           url: 'inline'
         }),
         postcssPresetEnv({
-          stage: 0, // default is 3
+          stage: 0 // default is 3
         }),
         cssnano({
           safe: true
@@ -171,7 +172,7 @@ const html = () =>
     .pipe($.plumber())
     .pipe(
       $.htmlmin({
-        collapseWhitespace: true,
+        collapseWhitespace: true
         // minifyCSS: true,
         // minifyJS: true,
         // removeComments: false
