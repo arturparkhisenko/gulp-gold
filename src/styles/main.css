@@ -19,6 +19,10 @@ main {
   padding: 1em;
 }
 
+img {
+  height: 5em;
+}
+
 footer {
   text-align: center;
 }

@@ -1,6 +1,6 @@
 :root {
   --brandFont: -apple-system, BlinkMacSystemFont, ".SFNSDisplay-Regular", ".SFNSText-Regular", "SF UI Text", "San Francisco", "Noto Sans", "Helvetica Neue", "Roboto", "Droid Sans", "Oxygen", "Lucida Grande", "Segoe UI", "Fira Sans", Ubuntu, Cantarell, Helvetica, Arial, sans-serif;
   --moduleColor: #222;
-  --moduleBGColor: #faa6;
+  --moduleBGColor: #f7e017;
   --module-size: 1.5em;
 }
