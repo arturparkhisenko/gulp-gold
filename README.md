@@ -11,8 +11,8 @@
 - [TL;DR](#tldr)
 - [Installing](#installing)
 - [Usage](#usage)
-  - [npm scripts (using local gulp)](#npm-scripts-using-local-gulp)
-  - [gulp tasks (require gulp-cli installed globally)](#gulp-tasks-require-gulp-cli-installed-globally)
+  - [npm scripts](#npm-scripts)
+  - [gulp tasks](#gulp-tasks)
 - [Optional](#optional)
 - [MIT License](#mit-license)
 
