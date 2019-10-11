@@ -12,7 +12,7 @@ module.exports = {
   performance: {
     hints: 'warning' // false, 'error'
   },
-  mode: production ? 'production' : 'development',
+  mode: production === true ? 'production' : 'development',
   devtool: 'source-map', // 'cheap-module-eval-source-map'
   watch: false,
   output: {

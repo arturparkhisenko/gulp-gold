@@ -1,0 +1,16 @@
+# NodeJS modules #
+##################
+node_modules
+
+# Scripts #
+###########
+src/scripts
+*.js
+
+# Other #
+#########
+*.md
+*.json
+*.webmanifest
+*.xml
+*.txt
