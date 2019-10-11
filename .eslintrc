@@ -6,12 +6,11 @@
   "env": {
     "browser": true,
     "node": true,
-    "es6": true
+    "es2020": true,
+    "serviceworker": true
   },
   "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module",
     "allowImportExportEverywhere": true,
     "ecmaFeatures": {
 			"impliedStrict": true,

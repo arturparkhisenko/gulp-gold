@@ -18,9 +18,9 @@ const pkg = require('./package.json');
 
 const $ = gulpLoadPlugins();
 const server = browserSync.create();
-const isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+const production = process.env.NODE_ENV !== 'production';
 
-console.log(`v${pkg.version}, process.env.NODE_ENV = ${process.env.NODE_ENV}`); // eslint-disable-line
+console.log(`v${pkg.version}, production = ${production}`); // eslint-disable-line
 
 const clean = () => del(['.tmp', 'dist']);
 
@@ -89,7 +89,7 @@ const styles = () =>
       // since: gulp.lastRun(styles),
     })
     .pipe($.plumber())
-    .pipe($.sourcemaps.init())
+    .pipe($.if(production === false, $.sourcemaps.init()))
     .pipe(
       $.postcss([
         postcssImport({
@@ -114,7 +114,7 @@ const styles = () =>
         suffix: '.min'
       })
     )
-    .pipe($.sourcemaps.write('./'))
+    .pipe($.if(production === false, $.sourcemaps.write('./')))
     .pipe(gulp.dest('src/styles/'))
     .pipe(gulp.dest('dist/styles/'))
     .pipe(
@@ -194,7 +194,7 @@ const watch = () => {
   server.init({
     notify: false,
     logPrefix: 'gg',
-    server: isDev ? 'src' : 'dist',
+    server: production === true ? 'dist' : 'src',
     https: true
     // port: 443,
     // scrollElementMapping: ['main', '.mdl-layout'],

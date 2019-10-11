@@ -6,7 +6,7 @@
 
 body {
   font-family: var(--brandFont);
-  color: color-mod(var(--moduleColor) alpha(80%));
+  color: color-mod(var(--colorDark) alpha(80%));
   font-size: var(--module-size, 2em);
 }
 
@@ -15,7 +15,7 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: var(--moduleBGColor);
+  background-color: var(--colorLight);
   padding: 1em;
 }
 
@@ -25,4 +25,16 @@ img {
 
 footer {
   text-align: center;
+}
+
+/* Apple dark theme support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--colorDark);
+    color: var(--colorLight);
+  }
+
+  main {
+    background-color: var(--colorDark);
+  }
 }
