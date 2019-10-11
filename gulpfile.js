@@ -18,7 +18,7 @@ const pkg = require('./package.json');
 
 const $ = gulpLoadPlugins();
 const server = browserSync.create();
-const production = process.env.NODE_ENV !== 'production';
+const production = process.env.NODE_ENV === 'production';
 
 console.log(`v${pkg.version}, production = ${production}`); // eslint-disable-line
 
