@@ -13,7 +13,7 @@ module.exports = {
     hints: 'warning' // false, 'error'
   },
   mode: production === true ? 'production' : 'development',
-  devtool: 'source-map', // 'cheap-module-eval-source-map'
+  devtool: production === true ? false : 'source-map', // 'cheap-module-eval-source-map'
   watch: false,
   output: {
     path: path.resolve(__dirname, './src/scripts'),
