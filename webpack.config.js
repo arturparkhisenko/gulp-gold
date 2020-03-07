@@ -1,7 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
 // const bundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 const production = process.env.NODE_ENV === 'production';
+
+// Use it to upgrade to the new Webpack
+// process.traceDeprecation = true;
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -38,6 +40,9 @@ module.exports = {
   },
 
   optimization: {
+    concatenateModules: production === true,
+    namedChunks: production !== true,
+    namedModules: production !== true,
     splitChunks: {
       chunks: 'all',
       name: 'vendor',
@@ -46,7 +51,6 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin(),
     // new bundleAnalyzerPlugin.BundleAnalyzerPlugin(),
   ]
 };

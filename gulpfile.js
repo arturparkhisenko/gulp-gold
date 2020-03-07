@@ -64,19 +64,29 @@ const scripts = done => {
     fancyLog(
       '[webpack]',
       stats.toString({
-        // output options
+        all: false,
+        // Output options
         // https://webpack.js.org/configuration/stats/
-        chunks: false,
-        // modules: false,
-        colors: true
+        assets: true,
+        builtAt: true,
+        // chunkGroups: true,
+        // chunks: true,
+        colors: true,
+        entrypoints: true,
+        errorDetails: true,
+        errors: true,
+        // modules: true,
+        // modulesSort: 'size',
+        performance: true,
+        timings: true,
+        version: true,
+        warnings: true
       })
     );
 
     fancyLog('[webpack]', 'Packed successfully!');
 
-    gulp
-      .src(['./src/scripts/main.min.js', './src/scripts/main.min.js.map'])
-      .pipe(gulp.dest('./dist/scripts/'));
+    gulp.src('./src/scripts/main.min.js*').pipe(gulp.dest('./dist/scripts/'));
   });
 
   done();
