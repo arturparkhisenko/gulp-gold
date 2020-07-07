@@ -5,26 +5,25 @@ const production = process.env.NODE_ENV === 'production';
 // Use it to upgrade to the new Webpack
 // process.traceDeprecation = true;
 
-module.exports = {
+let config = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    main: ['./scripts/main.js']
+    main: ['./scripts/main.js'],
   },
   target: 'web',
   performance: {
-    hints: 'warning' // false, 'error'
+    hints: 'warning', // false, 'error'
   },
   mode: production === true ? 'production' : 'development',
-  devtool: production === true ? false : 'source-map', // 'cheap-module-eval-source-map'
+  devtool: production === true ? false : 'cheap-module-eval-source-map', // 'source-map'
   watch: false,
   output: {
     path: path.resolve(__dirname, './src/scripts'),
-    filename: '[name].min.js'
+    filename: '[name].min.js',
   },
   resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules']
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
-
   module: {
     rules: [
       {
@@ -33,13 +32,18 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader?cacheDirectory=true',
-          }
-        ]
-      }
-    ]
+          },
+        ],
+      },
+    ],
   },
+  plugins: [
+    // new bundleAnalyzerPlugin.BundleAnalyzerPlugin(),
+  ],
+};
 
-  optimization: {
+if (production === true) {
+  config.optimization = {
     concatenateModules: production === true,
     namedChunks: production !== true,
     namedModules: production !== true,
@@ -47,10 +51,8 @@ module.exports = {
       chunks: 'all',
       name: 'vendor',
     },
-    minimize: true
-  },
+    minimize: true,
+  };
+}
 
-  plugins: [
-    // new bundleAnalyzerPlugin.BundleAnalyzerPlugin(),
-  ]
-};
+module.exports = config;
