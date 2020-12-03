@@ -1,7 +1,7 @@
 {
   "name": "gulp-gold",
   "description": "Custom Gulp pack",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "main": "gulpfile.js",
   "jsnext:main": "gulpfile.js",
   "author": "Artur Parkhisenko <ikeagold@gmail.com> (https://arturparkhisenko.github.io/)",
