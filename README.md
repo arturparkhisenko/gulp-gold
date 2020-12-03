@@ -23,7 +23,7 @@
 Used latest tools: Gulp, Babel, Webpack, PostCSS, Prettier
 
 - Styles - [stylelint](https://stylelint.io/) -> [postCSS](https://postcss.org/)([postcss-import](https://www.npmjs.com/package/postcss-import), [postcss-url](https://www.npmjs.com/package/postcss-url), [postcss-preset-env](https://www.npmjs.com/package/postcss-preset-env)(autoprefixed&cssnext), [cssnano](https://www.npmjs.com/package/cssnano))
-- Scripts - [eslint](https://www.npmjs.com/package/eslint) -> [webpack4](https://webpack.js.org)([babel-preset-env](https://www.npmjs.com/package/@babel/preset-env)) -> [prettier](https://prettier.io/)
+- Scripts - [eslint](https://www.npmjs.com/package/eslint) -> [webpack](https://webpack.js.org)([babel-preset-env](https://www.npmjs.com/package/@babel/preset-env)) -> [prettier](https://prettier.io/)
 - Images - [imagemin](https://www.npmjs.com/package/gulp-imagemin)
 - [Browsersync](https://www.browsersync.io/)
 - Errors output improved by [plumber](https://www.npmjs.com/package/gulp-plumber)

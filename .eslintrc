@@ -9,7 +9,7 @@
     "es2020": true,
     "serviceworker": true
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "allowImportExportEverywhere": true,
     "ecmaFeatures": {

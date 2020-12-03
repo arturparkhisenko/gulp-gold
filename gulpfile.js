@@ -20,6 +20,8 @@ const $ = gulpLoadPlugins();
 const server = browserSync.create();
 const production = process.env.NODE_ENV === 'production';
 
+process.traceDeprecation = production === false;
+
 console.log(`v${pkg.version}, production = ${production}`); // eslint-disable-line
 
 const clean = () => del(['.tmp', 'dist']);
