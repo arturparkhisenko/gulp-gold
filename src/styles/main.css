@@ -1,12 +1,13 @@
 @import "./module-example.css";
 
 :root {
-  --brandFont: -apple-system, "blinkmacsystemfont", ".SFNSDisplay-Regular", ".SFNSText-Regular", "SF UI Text", "San Francisco", "Noto Sans", "Helvetica Neue", "Roboto", "Droid Sans", "Oxygen", "Lucida Grande", "Segoe UI", "Fira Sans", "ubuntu", "cantarell", "helvetica", "arial", sans-serif;
+  /* stylelint-disable-next-line max-line-length */
+  --brand-font: -apple-system, "blinkmacsystemfont", ".SFNSDisplay-Regular", ".SFNSText-Regular", "SF UI Text", "San Francisco", "Noto Sans", "Helvetica Neue", "Roboto", "Droid Sans", "Oxygen", "Lucida Grande", "Segoe UI", "Fira Sans", "ubuntu", "cantarell", "helvetica", "arial", sans-serif;
 }
 
 body {
-  font-family: var(--brandFont);
-  color: color-mod(var(--colorDark) alpha(80%));
+  font-family: var(--brand-font);
+  color: color-mod(var(--color-dark) alpha(80%));
   font-size: var(--module-size, 2em);
 }
 
@@ -15,7 +16,7 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: var(--colorLight);
+  background-color: var(--color-light);
   padding: 1em;
 }
 
@@ -30,11 +31,11 @@ footer {
 /* Apple dark theme support */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: var(--colorDark);
-    color: var(--colorLight);
+    background-color: var(--color-dark);
+    color: var(--color-light);
   }
 
   main {
-    background-color: var(--colorDark);
+    background-color: var(--color-dark);
   }
 }
