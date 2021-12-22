@@ -1,6 +1,7 @@
 # gulp-gold :wrench:, [npm link](https://www.npmjs.org/package/gulp-gold)
 
 [![GitHub release](https://img.shields.io/github/release/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/releases) [![dependencies Status](https://david-dm.org/arturparkhisenko/gulp-gold/dev-status.svg)](https://david-dm.org/arturparkhisenko/gulp-gold?type=dev) [![Known Vulnerabilities](https://snyk.io/test/github/arturparkhisenko/gulp-gold/badge.svg)](https://snyk.io/test/github/arturparkhisenko/gulp-gold) [![GitHub license](https://img.shields.io/github/license/arturparkhisenko/gulp-gold.svg)](https://github.com/arturparkhisenko/gulp-gold/blob/master/LICENSE.md)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Farturparkhisenko%2Fgulp-gold.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Farturparkhisenko%2Fgulp-gold?ref=badge_shield)
 
 > custom Gulp pack
 
@@ -69,3 +70,6 @@ npm install -g gulp-cli
 - [normalize.css](https://github.com/necolas/normalize.css)
 
 ## [MIT License](LICENSE.md)
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Farturparkhisenko%2Fgulp-gold.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Farturparkhisenko%2Fgulp-gold?ref=badge_large)
