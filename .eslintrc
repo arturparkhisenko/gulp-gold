@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "airbnb/base",
-    "prettier"
-  ],
+  "extends": ["prettier"],
   "env": {
     "browser": true,
     "node": true,
@@ -11,11 +8,10 @@
   },
   "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "allowImportExportEverywhere": true,
     "ecmaFeatures": {
-			"impliedStrict": true,
-			"jsx": true
-		}
+      "impliedStrict": true,
+      "jsx": true
+    }
   },
   "rules": {
     "function-paren-newline": 0,

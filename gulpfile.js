@@ -16,6 +16,7 @@ const webpack = require('webpack');
 const webpackConfig = require('./webpack.config');
 const pkg = require('./package.json');
 
+let imagemin = null;
 const $ = gulpLoadPlugins();
 const server = browserSync.create();
 const production = process.env.NODE_ENV === 'production';
@@ -23,6 +24,13 @@ const production = process.env.NODE_ENV === 'production';
 process.traceDeprecation = production === false;
 
 console.log(`v${pkg.version}, production = ${production}`); // eslint-disable-line
+
+// TODO: imagemin ESM only, using dynamic import before full support of "type": "module"
+const importDynamicModules = () => {
+  return Promise.resolve(import('gulp-imagemin')).then((imageminModule) => {
+    imagemin = imageminModule.default;
+  });
+};
 
 const clean = () => del(['.tmp', 'dist']);
 
@@ -136,23 +144,25 @@ const styles = () =>
     );
 
 const images = () =>
-  gulp
-    .src(['src/images/**/*'], {
-      // since: gulp.lastRun(images),
-    })
-    .pipe($.plumber())
-    .pipe(
-      $.imagemin({
-        progressive: true,
-        interlaced: true
+  Promise.resolve(importDynamicModules()).then(() =>
+    gulp
+      .src(['src/images/**/*'], {
+        // since: gulp.lastRun(images),
       })
-    )
-    .pipe(gulp.dest('dist/images/'))
-    .pipe(
-      $.size({
-        title: 'images'
-      })
-    );
+      .pipe($.plumber())
+      .pipe(
+        imagemin({
+          progressive: true,
+          interlaced: true
+        })
+      )
+      .pipe(gulp.dest('dist/images/'))
+      .pipe(
+        $.size({
+          title: 'images'
+        })
+      )
+  );
 
 const copy = () =>
   gulp

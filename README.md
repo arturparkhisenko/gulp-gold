@@ -6,7 +6,6 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [TL;DR](#tldr)
 - [Installing](#installing)
@@ -31,13 +30,15 @@ Used latest tools: Gulp, Babel, Webpack, PostCSS, Prettier
 
 ## Installing
 
-- You must have [NodeJS](https://nodejs.org/) (includes [NPM](https://www.npmjs.com/)) installed
+- You must have [NodeJS](https://nodejs.org/en/) (includes [NPM](https://www.npmjs.com/)) installed
 
 ```shell
-npm install
+npm install --legacy-peer-deps
 ```
 
-This project uses Gulp v.4 so we should have `gulp-cli` or `npx` (goes with npm v5.3.0+) installed globally to use npm scripts using local gulp:
+> "--legacy-peer-deps" is required because of Stylelint, it'll be resolved later
+
+This project uses Gulp v.4 so we should have `gulp-cli` or `npx` (goes with NPM v5.3.0+) installed globally to use npm scripts using local Gulp:
 
 ```shell
 npm install -g gulp-cli
@@ -50,9 +51,8 @@ npm install -g gulp-cli
 - `npm run build` just build with `NODE_ENV=production`
 - `npm run dev` or `npm start` serving from `src`
 - `npm run prod` serving from `dist`
-- `npm run lintStyles`
-- `npm run lintScripts`
-- `npm run formatScripts`
+- `npm run lint`
+- `npm run format`
 
 ### gulp tasks
 
@@ -67,5 +67,10 @@ npm install -g gulp-cli
 ## Optional
 
 - [normalize.css](https://github.com/necolas/normalize.css)
+- [sanitize.css](https://github.com/csstools/sanitize.css)
+  - [Marx, on top of sanitize.css](https://github.com/mblode/marx)
+- [Cleanslate](https://github.com/premasagar/cleanslate)
+- [Typeset.css](https://github.com/joshuarudd/typeset.css)
+- [CSS Mini Reset](https://github.com/vladocar/CSS-Mini-Reset)
 
 ## [MIT License](LICENSE.md)
