@@ -27,17 +27,18 @@
     "node": ">= 16.9"
   },
   "scripts": {
-    "gulp": "./node_modules/.bin/gulp",
     "build": "cross-env NODE_ENV=production gulp",
-    "start": "cross-env NODE_ENV=development gulp serve",
     "dev": "npm run start",
-    "prod": "cross-env NODE_ENV=production gulp serve",
-    "lintStyles": "gulp lintStyles",
-    "lintScripts": "gulp lintScripts",
-    "lint": "npm run lintStyles && npm run lintScripts",
-    "formatScripts": "prettier --write './src/scripts/**/*.js'",
     "format": "npm run formatScripts",
-    "np": "np --no-yarn"
+    "formatScripts": "prettier --write './src/scripts/**/*.js'",
+    "gulp": "./node_modules/.bin/gulp",
+    "lint": "npm run lintStyles && npm run lintScripts",
+    "lintScripts": "gulp lintScripts",
+    "lintStyles": "gulp lintStyles",
+    "np": "np --no-yarn",
+    "prod": "cross-env NODE_ENV=production gulp serve",
+    "start": "cross-env NODE_ENV=development gulp serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
